@@ -1,0 +1,20 @@
+uploadImage:
+  handler: src/handlers/uploadImage.handler
+  events:
+    - http:
+        path: /upload
+        method: POST
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+analyzeImage:
+  handler: src/handlers/analyzeImage.handler
+  events:
+    - http:
+        path: /analyze/{key}
+        method: GET
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer

@@ -1,0 +1,11 @@
+- Effect: Allow
+  Action:
+    - 's3:PutObject'
+    - 's3:GetObject'
+  Resource: arn:aws:s3:::${self:custom.ImageAnalysisBucket.name}/*
+- Effect: Allow
+  Action:
+    - rekognition:DetectLabels
+    - rekognition:DetectFaces
+    - rekognition:DetectText
+  Resource: '*'
