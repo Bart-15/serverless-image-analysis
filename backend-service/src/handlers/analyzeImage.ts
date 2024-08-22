@@ -3,8 +3,9 @@ import { headers } from '../helpers/const';
 import { handleError, HttpError } from '../middleware/errorHandler';
 import { ProxyHandler } from '../types/handler.types';
 
-const analyzeImage: ProxyHandler = async event => {
+const analyzeImage: ProxyHandler = async (event, context) => {
   try {
+    console.log(context);
     const key = event.pathParameters?.key as string;
 
     if (!key) throw new HttpError(400, { error: 'Key is required' });
@@ -18,9 +19,19 @@ const analyzeImage: ProxyHandler = async event => {
       },
     };
 
+    const rekognitionFaceParams = {
+      Image: {
+        S3Object: {
+          Bucket: IMAGE_ANALYSIS_BUCKET,
+          Name: key,
+        },
+      },
+      Attributes: ['ALL'],
+    };
+
     const [labelsResponse, facesResponse, textResponse] = await Promise.all([
       rekognition.detectLabels(rekognitionParams).promise(),
-      rekognition.detectFaces(rekognitionParams).promise(),
+      rekognition.detectFaces(rekognitionFaceParams).promise(),
       rekognition.detectText(rekognitionParams).promise(),
     ]);
 

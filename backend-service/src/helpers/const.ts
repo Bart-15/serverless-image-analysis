@@ -20,4 +20,6 @@ export const validImageMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'ima
 
 export const headers = {
   'content-type': 'application/json',
+  'Access-Control-Allow-Origin': 'http://localhost:5173', // Ensure this matches the origin in the CORS settings
+  'Access-Control-Allow-Credentials': 'true',
 };

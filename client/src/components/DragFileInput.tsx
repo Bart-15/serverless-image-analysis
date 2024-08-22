@@ -1,4 +1,9 @@
-const DragFileInput = () => {
+type DragFileInputProps = {
+  setImgFile: React.Dispatch<React.SetStateAction<File | null>>;
+  handleUpload: (file: File | null) => void;
+};
+
+const DragFileInput = ({ handleUpload }: DragFileInputProps) => {
   return (
     <>
       <label className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none mb-2">
@@ -9,11 +14,11 @@ const DragFileInput = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
             />
           </svg>
@@ -26,7 +31,7 @@ const DragFileInput = () => {
           type="file"
           name="file_upload"
           className="hidden"
-          disabled={true}
+          onChange={(e) => handleUpload(e.target.files![0])}
         />
       </label>
       <button className="bg-red-600 p-2 text-white rounded">

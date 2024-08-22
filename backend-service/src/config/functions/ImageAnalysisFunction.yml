@@ -4,6 +4,9 @@ uploadImage:
     - http:
         path: /upload
         method: POST
+        cors:
+          origins:
+            - 'http://localhost:5173'
         # authorizer:
         #   type: COGNITO_USER_POOLS
         #   authorizerId:
@@ -14,6 +17,9 @@ analyzeImage:
     - http:
         path: /analyze/{key}
         method: GET
+        cors:
+          origins:
+            - 'http://localhost:5173'
         # authorizer:
         #   type: COGNITO_USER_POOLS
         #   authorizerId:
