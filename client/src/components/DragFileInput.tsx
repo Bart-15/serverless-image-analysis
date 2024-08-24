@@ -5,7 +5,7 @@ type DragFileInputProps = {
 
 const DragFileInput = ({ handleUpload }: DragFileInputProps) => {
   return (
-    <>
+    <div className="max-w-xl flex flex-col items-start">
       <label className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none mb-2">
         <span className="flex items-center space-x-2 bg-white">
           <svg
@@ -23,8 +23,8 @@ const DragFileInput = ({ handleUpload }: DragFileInputProps) => {
             />
           </svg>
           <span className="font-medium text-gray-600 bg-white">
-            Drop files to Attach, or
-            <span className="text-blue-600 underline bg-white">browse</span>
+            Drop files to Attach, or{''}
+            <span className="text-blue-600 underline bg-white"> browse</span>
           </span>
         </span>
         <input
@@ -34,10 +34,10 @@ const DragFileInput = ({ handleUpload }: DragFileInputProps) => {
           onChange={(e) => handleUpload(e.target.files![0])}
         />
       </label>
-      <button className="bg-red-600 p-2 text-white rounded">
-        Removed Photo
-      </button>
-    </>
+      <p className="text-xs text-gray-500">
+        Only JPEG and PNG formats are accepted, with a maximum size of 3 MB.
+      </p>
+    </div>
   );
 };
 

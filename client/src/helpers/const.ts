@@ -1,3 +1,6 @@
+import { Text } from '../types/data.types';
+
+export const acceptedFilType = ['image/png', 'image/jpeg'];
 export const base64encode = (file: File) =>
   new Promise((resolve) => {
     let baseUrl;
@@ -17,3 +20,6 @@ export function getRoundedValue(num: number) {
 
   return rounded;
 }
+
+export const mergedText = (detectedText: Text[]) =>
+  detectedText.map((item) => item.detectedText).join(' ');

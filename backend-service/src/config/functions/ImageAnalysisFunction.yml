@@ -7,10 +7,10 @@ uploadImage:
         cors:
           origins:
             - 'http://localhost:5173'
-        # authorizer:
-        #   type: COGNITO_USER_POOLS
-        #   authorizerId:
-        #     Ref: ApiGatewayAuthorizer
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
 analyzeImage:
   handler: src/handlers/analyzeImage.handler
   events:
@@ -20,7 +20,7 @@ analyzeImage:
         cors:
           origins:
             - 'http://localhost:5173'
-        # authorizer:
-        #   type: COGNITO_USER_POOLS
-        #   authorizerId:
-        #     Ref: ApiGatewayAuthorizer
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer

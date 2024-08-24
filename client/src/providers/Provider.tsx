@@ -4,6 +4,9 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'sonner';
 import { queryClient } from '../config/queryClient';
 
+import '@aws-amplify/ui-react/styles.css';
+import '../lib/Amplify';
+
 function Provider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,8 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import { IMAGE_ANALYSIS_BUCKET, s3 } from '../config/config';
-
-export const generateUUID = () => uuidv4();
 
 export const generatePresignedURL = async (key: string) => {
   const expirationTime = 24 * 3600; // 1 day

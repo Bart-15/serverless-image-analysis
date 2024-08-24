@@ -1,4 +1,4 @@
-type Text = {
+export type Text = {
   detectedText: string;
 };
 
@@ -12,7 +12,7 @@ type Face = {
     Low: number;
     High: number;
   };
-  Eyeglassess: {
+  Eyeglasses: {
     Value: boolean;
     Confidence: number;
   };
@@ -35,3 +35,18 @@ export type AnalyzedData = {
   text: Text[];
   faces: Face[];
 };
+
+export interface AuthEventData {
+  payload: {
+    event:
+      | 'signIn'
+      | 'signOut'
+      | 'signUp'
+      | 'signIn_failure'
+      | 'configured'
+      | 'forgotPassword';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data?: any; // Depending on the event, this can be more specific.
+    message?: string;
+  };
+}
