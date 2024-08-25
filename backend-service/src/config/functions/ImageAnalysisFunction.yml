@@ -24,3 +24,7 @@ analyzeImage:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
+deleteS3Images:
+  handler: src/handlers/deleteS3Images.handler
+  events:
+    - schedule: rate(24 hours)
